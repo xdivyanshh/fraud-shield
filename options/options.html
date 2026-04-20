@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Shield Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Fraud Shield Options</h1>
+            <p>Customize your protection settings below.</p>
+        </header>
+
+        <section class="settings-card">
+            <h2>Custom Phishing Keywords</h2>
+            <p>Fraud Shield scans Gmail for scam keywords. You can add your own custom triggers below (comma-separated).</p>
+            <textarea id="custom-keywords" placeholder="e.g., lottery, urgent transfer, exclusive offer"></textarea>
+        </section>
+
+        <section class="settings-card">
+            <h2>Feature Toggles</h2>
+            <div class="toggle-row">
+                <label for="enable-gmail">Gmail Deep Scan</label>
+                <input type="checkbox" id="enable-gmail" checked>
+            </div>
+            <div class="toggle-row">
+                <label for="enable-search">Google Search Intercept</label>
+                <input type="checkbox" id="enable-search" checked>
+            </div>
+            <div class="toggle-row">
+                <label for="enable-global">Global Typosquatting & Age Block</label>
+                <input type="checkbox" id="enable-global" checked>
+            </div>
+        </section>
+
+        <button id="save-btn" class="save-button">Save Settings</button>
+        <span id="status-msg" style="display:none; color: green; margin-left:15px; font-weight:bold;">Settings Saved!</span>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

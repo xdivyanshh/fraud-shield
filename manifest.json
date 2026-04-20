@@ -6,17 +6,20 @@
   "action": {
     "default_popup": "popup/popup.html"
   },
+  "options_page": "options/options.html",
   "background": {
     "service_worker": "background.js"
   },
   "permissions": [
     "storage",
     "activeTab",
-    "scripting"
+    "scripting",
+    "tabs"
   ],
   "host_permissions": [
     "https://www.google.com/search*",
-    "https://mail.google.com/*"
+    "https://mail.google.com/*",
+    "<all_urls>"
   ],
   "content_scripts": [
     {
@@ -28,6 +31,12 @@
       "matches": ["https://mail.google.com/*"],
       "js": ["scripts/gmail_content.js"],
       "css": ["styles/gmail_content.css"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/global_content.js"],
+      "css": ["styles/global_content.css"],
+      "run_at": "document_start"
     }
   ]
 }

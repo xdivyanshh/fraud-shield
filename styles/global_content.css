@@ -1,0 +1,78 @@
+#fraud-shield-global-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(211, 47, 47, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 2147483647; /* Max z-index to be above EVERYTHING */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fraud-shield-block-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border-top: 8px solid #b71c1c;
+}
+
+.fraud-shield-block-card h1 {
+    color: #b71c1c;
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.fraud-shield-block-card p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.fraud-shield-reason {
+    background: #ffebee;
+    color: #c62828;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 18px;
+    border-left: 5px solid #d32f2f;
+}
+
+#fraud-shield-leave-btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+#fraud-shield-leave-btn:hover {
+    background-color: #115293;
+}
+
+#fraud-shield-proceed-btn {
+    display: block;
+    margin-top: 20px;
+    color: #757575;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#fraud-shield-proceed-btn:hover {
+    color: #b71c1c;
+}
