@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.header {
+    background-color: #dc3545;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.content {
+    padding: 20px;
+}
+
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.status-label {
+    font-weight: bold;
+}
+
+#status-indicator {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+#status-indicator.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+#status-indicator.inactive {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.stats {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.stats strong {
+    color: #dc3545;
+    font-size: 1.2rem;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button[id="toggle-btn"] {
+    background-color: #343a40;
+    color: white;
+}
+
+button[id="toggle-btn"]:hover {
+    background-color: #23272b;
+}

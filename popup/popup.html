@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Shield</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Fraud Shield 🛡️</h1>
+    </div>
+    
+    <div class="content">
+        <div class="status-container">
+            <span class="status-label">Protection Status:</span>
+            <span id="status-indicator" class="active">Active</span>
+        </div>
+        
+        <div class="stats">
+            <p>Threats Blocked: <strong id="threat-count">0</strong></p>
+        </div>
+        
+        <button id="toggle-btn">Disable Protection</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

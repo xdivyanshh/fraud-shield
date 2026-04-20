@@ -1,0 +1,24 @@
+.fraud-shield-warning {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    border-left: 4px solid #c62828;
+    z-index: 9999;
+}
+
+.fraud-shield-highlight {
+    border: 2px dashed #ef5350 !important;
+    padding: 10px !important;
+    background-color: rgba(255, 235, 238, 0.4) !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease;
+}
+
+.fraud-shield-highlight:hover {
+    border-color: #c62828 !important;
+    background-color: rgba(255, 235, 238, 0.8) !important;
+}
