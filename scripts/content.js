@@ -9,11 +9,21 @@ chrome.storage.local.get(['features'], (result) => {
 function scanForSponsoredLinks() {
     console.log("Fraud Shield: Scanning for sponsored links...");
 
-    const potentialAds = document.querySelectorAll('div[data-text-ad="1"], .uEierd');
+    // Google frequently obfuscates class names for ads to stop adblockers. 
+    // The most robust way is to find links that use Google's ad-click tracker service (/aclk)
+    const adLinks = document.querySelectorAll('a[href^="https://www.google.com/aclk"], a[href*="/aclk?"]');
 
-    potentialAds.forEach(adBlock => {
-        const linkElem = adBlock.querySelector('a[href]');
-        if (linkElem && !adBlock.classList.contains('fraud-shield-scanned')) {
+    adLinks.forEach(linkElem => {
+        // Find the outermost container of this specific ad to highlight
+        // We go up a few levels to wrap the whole card
+        let adBlock = linkElem.closest('div[data-text-ad="1"], .uEierd, div[role="listitem"]');
+        
+        // Fallback: If Google changed container classes, just wrap the link's direct grand-parent
+        if (!adBlock) {
+            adBlock = linkElem.parentElement.parentElement;
+        }
+
+        if (adBlock && !adBlock.classList.contains('fraud-shield-scanned')) {
             const url = linkElem.href;
             adBlock.classList.add('fraud-shield-scanned');
             
@@ -40,10 +50,15 @@ function scanForSponsoredLinks() {
 }
 
 function scanSponsoredLinksDynamically() {
-    const potentialAds = document.querySelectorAll('div[data-text-ad="1"]:not(.fraud-shield-scanned), .uEierd:not(.fraud-shield-scanned)');
-    potentialAds.forEach(adBlock => {
-        const linkElem = adBlock.querySelector('a[href]');
-        if (linkElem) {
+    const unScannedLinks = document.querySelectorAll('a[href*="/aclk?"]:not(.fraud-shield-scanned-link)');
+    
+    unScannedLinks.forEach(linkElem => {
+        linkElem.classList.add('fraud-shield-scanned-link');
+        
+        let adBlock = linkElem.closest('div[data-text-ad="1"], .uEierd, div[role="listitem"]');
+        if (!adBlock) adBlock = linkElem.parentElement.parentElement;
+        
+        if (adBlock && !adBlock.classList.contains('fraud-shield-scanned')) {
             adBlock.classList.add('fraud-shield-scanned');
             chrome.runtime.sendMessage({ type: "CHECK_URL_SAFE_BROWSING", url: linkElem.href }, (response) => {
                 if (response && response.safe === false) {
